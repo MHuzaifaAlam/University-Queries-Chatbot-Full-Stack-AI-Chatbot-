@@ -90,8 +90,8 @@ const App = () => {
       <div className="w-full max-w-xl h-[80vh] flex flex-col bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
         {/* Header */}
         <header className="p-4 bg-gray-700 text-center border-b border-gray-600">
-          <h1 className="text-xl font-extrabold text-indigo-400">FastAPI Chatbot</h1>
-          <p className="text-xs text-gray-400">Powered by LSTM + React + FastAPI</p>
+          <h1 className="text-xl font-extrabold text-indigo-400">UNIVERSITY QUERIES CHATBOT</h1>
+          <p className="text-xs text-gray-400">DEVELOPED BY M HUZAIFA ALAM</p>
         </header>
 
         {/* Chat Messages */}
