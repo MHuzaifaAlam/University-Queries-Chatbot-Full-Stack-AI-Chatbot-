@@ -3,7 +3,7 @@ import { Send, User, Bot, Loader2 } from 'lucide-react';
 
 // === BACKEND API URL ===
 // ⚠️ Change this URL after deployment (e.g. Render or Vercel backend URL)
-const API_URL = 'http://127.0.0.1:8000/chat/';
+const API_URL = 'https://university-queries-chatbot-full-stack-ai.onrender.com';
 
 const App = () => {
   const [messages, setMessages] = useState([]);
