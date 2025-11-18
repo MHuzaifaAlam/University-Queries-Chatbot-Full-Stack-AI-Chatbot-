@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, User, Bot, Loader2 } from 'lucide-react';
 
 // === BACKEND API URL ===
-// ⚠️ Change this URL after deployment (e.g. Render or Vercel backend URL)
+// The base URL for the Render service. The chat path (/chat/) is added below.
 const API_URL = 'https://university-queries-chatbot-full-stack-ai.onrender.com';
 
 const App = () => {
@@ -19,7 +19,10 @@ const App = () => {
   // === Function to call FastAPI backend ===
   const callApi = async (userMessage) => {
     try {
-      const response = await fetch(`${API_URL}?query=${encodeURIComponent(userMessage)}`, {
+      // *** FIX APPLIED HERE: Sending POST request to the correct /chat/ endpoint ***
+      const chatEndpoint = `${API_URL}/chat/?query=${encodeURIComponent(userMessage)}`;
+      
+      const response = await fetch(chatEndpoint, {
         method: 'POST',
       });
 
@@ -32,7 +35,7 @@ const App = () => {
       return data.response || "Sorry, I couldn't understand that.";
     } catch (error) {
       console.error('API Error:', error);
-      return "⚠️ Unable to connect to the backend. Make sure your FastAPI server is running.";
+      return "⚠️ Unable to connect to the backend. Make sure your FastAPI server is running and the CORS settings allow your Vercel domain.";
     }
   };
 
@@ -54,8 +57,7 @@ const App = () => {
 
       // Add bot message
       setMessages((prev) => [...prev, { text: botResponse, sender: 'bot' }]);
-    } catch 
-     {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { text: 'Error: Unable to fetch response from server.', sender: 'bot' },
